@@ -1,5 +1,6 @@
 @import './variabes';
 body {
+  background-color: rgb(235, 232, 232);
   header {
     font-size: 2.5em;
     font-weight: bold;
@@ -28,5 +29,18 @@ body {
     width: 3em;
     margin: auto;
     margin-bottom: 1em;
+  }
+
+  input[type='radio']:checked + label {
+    padding: 10px;
+    color: white;
+    background-color: rgb(44, 65, 111);
+  }
+
+  .apiData {
+    margin-top: 2em;
+    margin-left: 30%;
+    background-color: white;
+    width: 640px;
   }
 }

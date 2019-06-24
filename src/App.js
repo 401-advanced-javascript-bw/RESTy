@@ -21,8 +21,14 @@ class App extends React.Component {
       <>
         <div>
           <Header />
-          <Form prompt="go" handle={this.handleForm} />
-          <ReactJson src={this.state.data} />
+          <Form
+            prompt="go"
+            handle={this.handleForm}
+            history={this.handleHistory}
+          />
+          <div className="apiData">
+            <ReactJson src={this.state.data} />
+          </div>
         </div>
       </>
     );

@@ -6,6 +6,8 @@ class Form extends React.Component {
     super(props);
     this.state = {
       urlValue: '',
+      selectedMethod: '',
+      checked: '',
     };
   }
 
@@ -22,28 +24,50 @@ class Form extends React.Component {
     this.setState({ urlValue: event.target.value });
   };
 
-  getData = event => {
-    this.setState({});
+  handleOptionChange = event => {
+    this.setState({ selectedMethod: event.target.value, checked: true });
+    console.log(this.state.selectedMethod);
   };
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} id="form">
-        {/* <input type="text" onChange={this.onChangeUrl.bind(this)} /> */}
-        <input id="url" type="text" onChange={this.onChangeUrl} />
-        <div>
-          <input type="radio" onSelect={this.getData} />
-          <span>GET</span>
-          <input type="radio" onSelect={this.postData} />
-          <span>POST</span>
-          <input type="radio" onSelect={this.putData} />
-          <span>PUT</span>
-          <input type="radio" onSelect={this.deleteData} />
-          <span>DELETE</span>
-        </div>
-        <button>{this.props.prompt}</button>
-        <textarea rows="10" cols="70" />
-      </form>
+      <>
+        <form onSubmit={this.handleSubmit} id="form">
+          <input id="url" type="text" onChange={this.onChangeUrl} />
+          <div>
+            <input
+              type="radio"
+              value="get"
+              checked={this.state.selectedMethod === 'get'}
+              onChange={this.handleOptionChange}
+            />
+            <label>GET</label>
+            <input
+              type="radio"
+              value="post"
+              checked={this.state.selectedMethod === 'post'}
+              onChange={this.handleOptionChange}
+            />
+            <label>POST</label>
+            <input
+              type="radio"
+              value="put"
+              checked={this.state.selectedMethod === 'put'}
+              onChange={this.handleOptionChange}
+            />
+            <label>PUT</label>
+            <input
+              type="radio"
+              value="delete"
+              checked={this.state.selectedMethod === 'delete'}
+              onChange={this.handleOptionChange}
+            />
+            <label>DELETE</label>
+          </div>
+          <button>{this.props.prompt}</button>
+          <textarea rows="10" cols="70" />
+        </form>
+      </>
     );
   }
 }
