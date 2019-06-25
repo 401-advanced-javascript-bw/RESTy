@@ -39,10 +39,10 @@
 - Example:
   - Get: https://lab-19-api-server-bw.herokuapp.com/api/v1/movies
   - Post: https://lab-19-api-server-bw.herokuapp.com/api/v1/movies
-    Text Area Input: {title: " ", genre:" ", rating:" "}
+    - Text Area Input: {title: " ", genre:" ", rating:" "}
   - Put: https://lab-19-api-server-bw.herokuapp.com/api/v1/movies/:id
-    Text Area Input: {tite:" ", genre:" ", rating:" "},
-    -Delete: https://lab-19-api-server-bw.herokuapp.com/api/v1/movies/:id
+    - Text Area Input: {tite:" ", genre:" ", rating:" "}
+  - Delete: https://lab-19-api-server-bw.herokuapp.com/api/v1/movies/:id
 
 #### Tests
 
@@ -52,4 +52,4 @@
 
 #### UML
 
-Link to an image of the UML for your application and response to events
+![](./assets/uml.jpg)
