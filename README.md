@@ -8,6 +8,7 @@
 
 - [submission PR](http://xyz.com)
 - [travis](http://xyz.com)
+- [amplify deployment](https://submission.d38hc35hqe1lgy.amplifyapp.com/)
 
 #### Documentation
 
