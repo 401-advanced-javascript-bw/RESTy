@@ -1,9 +1,10 @@
 import React from 'react';
+import ReactJson from 'react-json-view';
 import './App.css';
 import Header from './components/Header.js';
 import Form from './components/Form.js';
 import './design/app.scss';
-import ReactJson from 'react-json-view';
+import Footer from './components/Footer.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -19,17 +20,16 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <div>
-          <Header />
-          <Form
-            prompt="go"
-            handle={this.handleForm}
-            history={this.handleHistory}
-          />
-          <div className="apiData">
-            <ReactJson src={this.state.data} />
-          </div>
+        <Header />
+        <Form
+          prompt="go"
+          handle={this.handleForm}
+          history={this.handleHistory}
+        />
+        <div className="apiData">
+          <ReactJson src={this.state.data} />
         </div>
+        <Footer />
       </>
     );
   }

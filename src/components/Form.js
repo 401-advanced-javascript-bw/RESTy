@@ -8,25 +8,80 @@ class Form extends React.Component {
       urlValue: '',
       selectedMethod: '',
       checked: '',
+      manipulateData: '',
     };
   }
 
-  handleSubmit = async event => {
+  handleSubmit = event => {
     event.preventDefault();
     let URL = this.state.urlValue;
-    let data = await superagent.get(URL);
-    let result = data.body;
-    console.log(result);
-    this.props.handle(result);
+    let manipulateData = this.state.manipulateData;
+    switch (this.state.selectedMethod) {
+      case 'get':
+        superagent.get(URL).then(result => {
+          this.props.handle(result.body);
+        });
+        break;
+      case 'post':
+        superagent
+          .post(URL)
+          .set('Content-Type', 'application/json')
+          .send(manipulateData)
+          .then(result => {
+            console.log(result);
+            superagent.get(URL).then(result => {
+              this.props.handle(result.body);
+            });
+          })
+          .catch(err => console.error(err));
+        break;
+      case 'put':
+        superagent
+          .put(URL)
+          .set('Content-Type', 'application/json')
+          .send(manipulateData)
+          .then(result => {
+            console.log(result);
+            let regex = /([^/]+$)/g;
+            URL = URL.replace(regex, '');
+            superagent.get(URL).then(result => {
+              this.props.handle(result.body);
+            });
+          })
+          .catch(err => console.error(err));
+        break;
+      case 'delete':
+        superagent
+          .delete(URL)
+          .set('Content-Type', 'application/json')
+          .then(result => {
+            console.log(result);
+            let regex = /([^/]+$)/g;
+            URL = URL.replace(regex, '');
+            superagent.get(URL).then(result => {
+              this.props.handle(result.body);
+            });
+          })
+          .catch(err => console.error(err));
+        break;
+
+      default:
+        superagent.get(URL).then(result => {
+          this.props.handle(result.body);
+        });
+    }
   };
 
   onChangeUrl = event => {
     this.setState({ urlValue: event.target.value });
   };
 
+  handleTextArea = event => {
+    this.setState({ manipulateData: event.target.value });
+  };
+
   handleOptionChange = event => {
     this.setState({ selectedMethod: event.target.value, checked: true });
-    console.log(this.state.selectedMethod);
   };
 
   render() {
@@ -40,6 +95,7 @@ class Form extends React.Component {
               value="get"
               checked={this.state.selectedMethod === 'get'}
               onChange={this.handleOptionChange}
+              className="get"
             />
             <label>GET</label>
             <input
@@ -65,7 +121,7 @@ class Form extends React.Component {
             <label>DELETE</label>
           </div>
           <button>{this.props.prompt}</button>
-          <textarea rows="10" cols="70" />
+          <textarea rows="6" cols="70" onChange={this.handleTextArea} />
         </form>
       </>
     );

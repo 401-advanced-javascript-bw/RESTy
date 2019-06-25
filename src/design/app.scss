@@ -37,10 +37,27 @@ body {
     background-color: rgb(44, 65, 111);
   }
 
+  textarea {
+    font-size: 1em;
+  }
+
   .apiData {
     margin-top: 2em;
     margin-left: 30%;
     background-color: white;
-    width: 640px;
+    width: 40%;
+  }
+
+  footer {
+    background-color: rgb(44, 65, 111);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    height: 30px;
+    width: 100%;
   }
 }
