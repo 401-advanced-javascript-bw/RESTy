@@ -6,8 +6,9 @@
 
 ### Links and Resources
 
-- [submission PR](http://xyz.com)
-- [travis](http://xyz.com)
+- [submission PR](https://github.com/401-advanced-javascript-bw/RESTy/pull/2)
+- [amplify deployment](https://submission.d38hc35hqe1lgy.amplifyapp.com/)
+- [travis](https://www.travis-ci.com/401-advanced-javascript-bw/RESTy)
 
 #### Documentation
 
